@@ -42,7 +42,7 @@ process_id <- function(i) {
   )
 }
 
-# Step 8 Merge Data
+# Step 8: Merge Data
 results <- parLapply(cl, 1:nrow(re3_ids), process_id)
 for (i in 1:nrow(re3_ids)) {
   re3_ids$access[i] = results[[i]]$access
@@ -52,5 +52,12 @@ for (i in 1:nrow(re3_ids)) {
 # Step 9: Save data
 saveRDS(re3_ids,"data/re3_ids.RDS")
 
-# Step 5: Save data
-saveRDS(re3_ids,"data/re3_ids.RDS")
+# Step 10: Filter Data to different groups
+open_re3 = re3_ids |> dplyr::filter(access == "open")
+restricted_re3 = re3_ids |> dplyr::filter(access == "restricted")
+closed_re3 = re3_ids |> dplyr::filter(access == "closed")
+
+# Step 11: Save data per repo
+saveRDS(open_re3, "data/open_ref.rds")
+saveRDS(restricted_re3, "data/restricted_re3.rds")
+saveRDS(closed_re3, "data/closed_re3.rds")

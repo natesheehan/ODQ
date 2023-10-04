@@ -7,7 +7,9 @@ pacman = function(pkg) {
 
 pkgs = c(
   "xml2",
-  "tibble"
+  "tibble",
+  "dplyr",
+  "parallel"
 )
 
 options(scipen = 999) # Turn off scientific notation
