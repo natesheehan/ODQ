@@ -22,8 +22,16 @@ re3_ids = tibble::tibble(name = name, id = id)
 # Step 5: Save data
 saveRDS(re3_ids,"data/re3_ids.RDS")
 
+for(i in 1:nrow(re3_ids)) {
+  print(paste0("OK! HERE WE GO. Printing for ", re3_ids$name[i]))
+  repo_data = read_xml(paste0(re3_url_repo,re3_ids$id[i]))
+  repo_names = xml_text(xml_find_all(repo_data, xpath = "//r3d:additionalName"))
+  repo_access = xml_text(xml_find_all(repo_data, xpath = "//r3d:dataAccessType"))
+  re3_ids$names[i] = list(repo_names)
+  re3_ids$access[i] = repo_access
+}
 
-test = read_xml(paste0(re3_url_repo,re3_ids$id[69]))
 
-xml_text(xml_find_all(test, xpath = "//r3d:additionalName"))
-xml_text(xml_find_all(test, xpath = "//r3d:dataAccessType"))
+
+
+
