@@ -9,7 +9,8 @@ pkgs = c(
   "xml2",
   "tibble",
   "dplyr",
-  "parallel"
+  "parallel",
+  "dimensionsR"
 )
 
 options(scipen = 999) # Turn off scientific notation
