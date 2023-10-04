@@ -49,3 +49,8 @@ for (i in 1:nrow(re3_ids)) {
   re3_ids$names[i] = results[[i]]$names
 }
 
+# Step 9: Save data
+saveRDS(re3_ids,"data/re3_ids.RDS")
+
+# Step 5: Save data
+saveRDS(re3_ids,"data/re3_ids.RDS")
