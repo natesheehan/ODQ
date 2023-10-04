@@ -19,6 +19,8 @@ id = xml2::xml_text(xml2::xml_find_all(raw_data, xpath = "//id"))
 # Step 4: Merge into table
 re3_ids = tibble::tibble(name = name, id = id)
 
+# Step 5: Save data
+saveRDS(re3_ids,"data/re3_ids.RDS")
 
 
 test = read_xml(paste0(re3_url_repo,re3_ids$id[69]))
