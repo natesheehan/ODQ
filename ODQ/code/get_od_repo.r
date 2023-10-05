@@ -51,6 +51,7 @@ for (i in 1:nrow(re3_ids)) {
 
 # Step 9: Save data
 saveRDS(re3_ids,"data/re3_ids.RDS")
+re3_ids = readRDS("data/re3_ids.RDS")
 
 # Step 10: Filter Data to different groups
 open_re3 = re3_ids |> dplyr::filter(access == "open")
